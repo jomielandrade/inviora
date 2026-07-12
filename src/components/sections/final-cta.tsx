@@ -5,7 +5,11 @@ import { Logo } from "@/components/brand/logo";
 
 export function FinalCta() {
   return (
-    <section className="bg-navy py-20 text-ivory sm:py-24">
+    <section className="relative overflow-hidden border-b border-gold/40 bg-navy py-20 text-ivory sm:py-24">
+      <span
+        aria-hidden="true"
+        className="absolute top-0 left-1/2 h-px w-24 -translate-x-1/2 bg-gold"
+      />
       <Container>
         <MotionReveal className="mx-auto flex max-w-2xl flex-col items-center text-center">
           <Logo variant="dark" height={52} />

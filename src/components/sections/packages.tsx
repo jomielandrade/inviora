@@ -10,19 +10,24 @@ import { Comparison } from "@/components/sections/comparison";
 
 export function Packages() {
   return (
-    <Section id="packages">
+    <Section id="packages" tier="primary" surface="tint">
       <SectionHeading
         eyebrow="Packages"
         title="Choose the experience that fits your celebration"
         description="Transparent packages with room to personalize. Start a conversation whenever you're ready."
+        align="left"
       />
 
-      <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-3">
+      <div className="mt-12 grid items-stretch gap-6 md:grid-cols-2 lg:mt-14 lg:grid-cols-3">
         {packages.map((pkg, index) => (
           <MotionReveal
             key={pkg.id}
             delay={index * 0.08}
-            className="flex min-w-0"
+            className={cn(
+              "flex min-w-0",
+              index === packages.length - 1 &&
+                "md:col-span-2 md:mx-auto md:w-[calc(50%-0.75rem)] lg:col-span-1 lg:mx-0 lg:w-auto"
+            )}
           >
             <PackageCard pkg={pkg} />
           </MotionReveal>

@@ -35,7 +35,12 @@ export function Header() {
           aria-label={`${siteConfig.name} home`}
           className="flex items-center rounded-md focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
         >
-          <Logo variant="light" height={40} priority />
+          <Logo
+            variant="light"
+            height={64}
+            priority
+            className="h-14 w-auto sm:h-16"
+          />
         </a>
 
         <nav aria-label="Primary" className="hidden md:block">
@@ -70,7 +75,7 @@ export function Header() {
             <Dialog.Backdrop className="fixed inset-0 z-50 bg-navy/40 backdrop-blur-sm transition-opacity duration-300 data-[ending-style]:opacity-0 data-[starting-style]:opacity-0" />
             <Dialog.Popup className="fixed inset-y-0 right-0 z-50 flex w-[min(20rem,88vw)] flex-col bg-ivory shadow-xl transition-transform duration-300 ease-out data-[ending-style]:translate-x-full data-[starting-style]:translate-x-full">
               <div className="flex h-16 items-center justify-between border-b border-border px-5 sm:h-20">
-                <Logo variant="light" height={36} />
+                <Logo variant="light" height={52} />
                 <Dialog.Title className="sr-only">Menu</Dialog.Title>
                 <Dialog.Close
                   aria-label="Close menu"

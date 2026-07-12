@@ -33,6 +33,11 @@ export const siteConfig = {
   },
 } as const;
 
+export const sampleCouple = {
+  firstName: "Jomiel",
+  secondName: "Rojiely",
+} as const;
+
 export type NavLink = {
   label: string;
   href: string;
@@ -98,6 +103,7 @@ export type Template = {
   name: string;
   mood: string;
   description: string;
+  layout: "classic" | "editorial" | "garden";
   palette: {
     surface: string;
     ink: string;
@@ -111,6 +117,7 @@ export const templates: readonly Template[] = [
     mood: "Timeless & formal",
     description:
       "Refined serif typography and quiet symmetry for a traditional celebration.",
+    layout: "classic",
     palette: {
       surface: "#f8f4ec",
       ink: "#0e1b3d",
@@ -122,6 +129,7 @@ export const templates: readonly Template[] = [
     mood: "Editorial & clean",
     description:
       "Confident layouts and generous space for couples who love a modern look.",
+    layout: "editorial",
     palette: {
       surface: "#0e1b3d",
       ink: "#f8f4ec",
@@ -133,6 +141,7 @@ export const templates: readonly Template[] = [
     mood: "Soft & natural",
     description:
       "Gentle tones and airy structure inspired by an intimate garden setting.",
+    layout: "garden",
     palette: {
       surface: "#eef1f4",
       ink: "#0e1b3d",

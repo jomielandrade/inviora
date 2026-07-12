@@ -31,6 +31,22 @@ test.describe("UI audit — homepage", () => {
 
     const overflow = await getHorizontalOverflowDetails(page);
     const brokenImages = await getBrokenImages(page);
+    const isMobile = (page.viewportSize()?.width ?? 0) <= 390;
+
+    if (isMobile) {
+      await page
+        .getByRole("button", { name: "Compare all features" })
+        .click();
+      const mobileComparison = page.locator("[data-comparison-mobile]");
+      await expect(mobileComparison).toBeVisible();
+      const comparisonOverflows = await mobileComparison.evaluate(
+        (element) => element.scrollWidth > element.clientWidth + 1,
+      );
+      expect(
+        comparisonOverflows,
+        `Mobile comparison must not require horizontal scrolling at ${viewport}.`,
+      ).toBe(false);
+    }
 
     const report = [
       `# UI audit — homepage (${viewport})`,
@@ -75,7 +91,6 @@ test.describe("UI audit — homepage", () => {
     });
 
     // Readable summary in the Playwright list reporter.
-    // eslint-disable-next-line no-console -- intentional audit summary output
     console.log(`\n[ui-audit ${viewport}]\n${report}`);
 
     expect(

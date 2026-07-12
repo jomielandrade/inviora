@@ -10,15 +10,16 @@ import { faqs } from "@/lib/site-config";
 
 export function Faq() {
   return (
-    <Section id="faq">
-      <div className="mx-auto max-w-3xl">
+    <Section id="faq" tier="supporting" surface="ivory">
+      <div className="grid gap-10 lg:grid-cols-[0.65fr_1fr] lg:gap-20">
         <SectionHeading
           eyebrow="FAQ"
           title="Questions, answered"
           description="A few things couples often ask before starting a conversation with us."
+          align="left"
         />
 
-        <MotionReveal className="mt-12">
+        <MotionReveal>
           <Accordion>
             {faqs.map((faq) => (
               <AccordionItem key={faq.question} value={faq.question}>
