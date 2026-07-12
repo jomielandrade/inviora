@@ -35,12 +35,44 @@ export function Comparison() {
         </div>
 
         <Collapsible.Panel className="h-[var(--collapsible-panel-height)] overflow-hidden transition-[height] duration-300 ease-out data-[ending-style]:h-0 data-[starting-style]:h-0">
-          <div className="mt-6 overflow-x-auto rounded-2xl border border-border bg-card">
-            {/* Horizontal scroll cue is preserved on small screens via min-width. */}
-            <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+          <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-card">
+            <div
+              data-comparison-mobile
+              className="divide-y divide-border md:hidden"
+            >
+              {comparisonRows.map((row) => (
+                <section key={row.feature} className="p-5">
+                  <h3 className="font-heading text-lg font-semibold text-navy">
+                    {row.feature}
+                  </h3>
+                  <dl className="mt-4 grid gap-3 text-sm">
+                    <MobileComparisonValue
+                      packageName={columns[0].name}
+                      value={row.essential}
+                    />
+                    <MobileComparisonValue
+                      packageName={columns[1].name}
+                      value={row.premium}
+                    />
+                    <MobileComparisonValue
+                      packageName={columns[2].name}
+                      value={row.custom}
+                    />
+                  </dl>
+                </section>
+              ))}
+            </div>
+
+            <table className="hidden w-full table-fixed border-collapse text-left text-sm md:table">
               <caption className="sr-only">
                 Feature comparison across Inviora packages
               </caption>
+              <colgroup>
+                <col className="w-[34%]" />
+                <col className="w-[22%]" />
+                <col className="w-[22%]" />
+                <col className="w-[22%]" />
+              </colgroup>
               <thead>
                 <tr className="border-b border-border">
                   <th
@@ -88,6 +120,25 @@ export function Comparison() {
           </div>
         </Collapsible.Panel>
       </Collapsible.Root>
+    </div>
+  );
+}
+
+function MobileComparisonValue({
+  packageName,
+  value,
+}: {
+  packageName: string;
+  value: string;
+}) {
+  const notIncluded = value === "Not included";
+
+  return (
+    <div className="grid grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-3">
+      <dt className="font-semibold text-navy">{packageName}</dt>
+      <dd className={notIncluded ? "text-muted-foreground" : "text-navy/90"}>
+        {value}
+      </dd>
     </div>
   );
 }

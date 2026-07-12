@@ -25,14 +25,15 @@ const iconByName: Record<string, LucideIcon> = {
 
 export function OtherCelebrations() {
   return (
-    <Section className="bg-white/60">
+    <Section tier="supporting" surface="white">
       <SectionHeading
         eyebrow="What's next"
         title="Made for every celebration—soon"
         description="Weddings are available today. More celebrations are on the way."
+        align="left"
       />
 
-      <ul className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+      <ul className="mt-10 grid grid-cols-2 border-t border-l border-border lg:grid-cols-3">
         {celebrations.map((celebration, index) => {
           const Icon = iconByName[celebration.name] ?? Sparkle;
           return (
@@ -43,15 +44,15 @@ export function OtherCelebrations() {
             >
               <div
                 className={cn(
-                  "flex h-full flex-col items-center gap-3 rounded-2xl border p-5 text-center",
+                  "flex h-full min-w-0 flex-col items-start gap-3 border-r border-b border-border p-4 sm:flex-row sm:items-center sm:p-5",
                   celebration.available
-                    ? "border-gold/40 bg-gold/10"
-                    : "border-border bg-card"
+                    ? "bg-gold/10"
+                    : "bg-white"
                 )}
               >
                 <span
                   className={cn(
-                    "flex size-11 items-center justify-center rounded-full",
+                    "flex size-10 shrink-0 items-center justify-center rounded-full",
                     celebration.available
                       ? "bg-navy text-gold"
                       : "bg-muted text-blue"
@@ -59,14 +60,18 @@ export function OtherCelebrations() {
                 >
                   <Icon aria-hidden="true" className="size-5" />
                 </span>
-                <p className="text-sm font-semibold text-navy">
-                  {celebration.name}
-                </p>
-                {celebration.available ? (
-                  <Badge variant="gold">Available now</Badge>
-                ) : (
-                  <Badge variant="muted">Coming soon</Badge>
-                )}
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-semibold text-navy">
+                    {celebration.name}
+                  </p>
+                  <div className="mt-1.5">
+                    {celebration.available ? (
+                      <Badge variant="gold">Available now</Badge>
+                    ) : (
+                      <Badge variant="muted">Coming soon</Badge>
+                    )}
+                  </div>
+                </div>
               </div>
             </MotionReveal>
           );

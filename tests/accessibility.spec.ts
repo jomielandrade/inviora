@@ -1,7 +1,10 @@
+import path from "node:path";
+
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
 import {
+  AUDIT_CURRENT_DIR,
   formatList,
   viewportLabel,
   writeReport,
@@ -53,6 +56,74 @@ test.describe("Accessibility audit — homepage", () => {
 
     await page.goto("/", { waitUntil: "load" });
     await page.waitForTimeout(300);
+
+    const revealStates = await page.locator("[data-reveal]").evaluateAll((elements) =>
+      elements.map((element) => {
+        const style = window.getComputedStyle(element);
+        return {
+          opacity: style.opacity,
+          transform: style.transform,
+        };
+      }),
+    );
+
+    expect(revealStates.length, "Expected reveal content on the homepage.").toBeGreaterThan(0);
+    expect(
+      revealStates.filter(
+        (state) => state.opacity !== "1" || state.transform !== "none",
+      ),
+      `Reduced-motion content must be visible before scrolling at ${viewport}.`,
+    ).toEqual([]);
+
+    if (viewport === "390x844" || viewport === "1440x1000") {
+      await page.screenshot({
+        path: path.join(
+          AUDIT_CURRENT_DIR,
+          `homepage-reduced-motion-${viewport}.png`,
+        ),
+        fullPage: true,
+        animations: "disabled",
+      });
+    }
+
+    const messengerLinks = await page
+      .locator('a[href*="m.me/"]')
+      .evaluateAll((links) =>
+        links.map((link) => {
+          const anchor = link as HTMLAnchorElement;
+          const url = new URL(anchor.href);
+          return {
+            href: anchor.href,
+            destination: `${url.origin}${url.pathname}`,
+            target: anchor.target,
+            rel: anchor.rel,
+          };
+        }),
+      );
+
+    expect(messengerLinks.length).toBeGreaterThan(0);
+    expect(new Set(messengerLinks.map((link) => link.destination)).size).toBe(1);
+    expect(
+      messengerLinks.every(
+        (link) =>
+          link.target === "_blank" &&
+          link.rel.includes("noopener") &&
+          link.rel.includes("noreferrer"),
+      ),
+      "Every Messenger link must keep safe external-link attributes.",
+    ).toBe(true);
+
+    if (
+      messengerLinks.some((link) =>
+        link.href.includes("REPLACE_WITH_INVIORA_PAGE"),
+      )
+    ) {
+      testInfo.annotations.push({
+        type: "launch-blocker",
+        description:
+          "The confirmed Inviora Messenger URL is still unavailable; the explicit placeholder remains.",
+      });
+    }
 
     const results = await new AxeBuilder({ page })
       .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])

@@ -8,7 +8,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-navy text-ivory">
+    <footer className="bg-navy-soft text-ivory">
       <Container className="py-14">
         <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
@@ -52,11 +52,10 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-sm text-ivory/60 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 border-t border-white/10 pt-6 text-sm text-ivory/60">
           <p>
             &copy; {year} {siteConfig.legalName}. All rights reserved.
           </p>
-          <p>{siteConfig.tagline}</p>
         </div>
       </Container>
     </footer>

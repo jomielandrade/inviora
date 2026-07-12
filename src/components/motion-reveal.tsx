@@ -13,9 +13,8 @@ type MotionRevealProps = {
 /**
  * Gentle fade + small vertical reveal on scroll into view.
  *
- * Motion is skipped entirely when the user prefers reduced motion. A `noscript`
- * fallback in the root layout forces `[data-reveal]` elements visible so core
- * content never depends on JavaScript to appear.
+ * Reduced-motion visibility is also enforced in CSS so core content never
+ * depends on hydration or JavaScript animation to appear.
  */
 export function MotionReveal({
   children,
@@ -24,26 +23,20 @@ export function MotionReveal({
   as = "div",
 }: MotionRevealProps) {
   const prefersReducedMotion = useReducedMotion();
-
-  if (prefersReducedMotion) {
-    const Tag = as;
-    return (
-      <Tag data-reveal className={className}>
-        {children}
-      </Tag>
-    );
-  }
-
   const MotionTag = motion[as];
 
   return (
     <MotionTag
       data-reveal
       className={className}
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+      whileInView={prefersReducedMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.5, ease: "easeOut", delay }}
+      transition={
+        prefersReducedMotion
+          ? undefined
+          : { duration: 0.5, ease: "easeOut", delay }
+      }
     >
       {children}
     </MotionTag>

@@ -3,7 +3,9 @@ import { Check, Heart } from "lucide-react";
 import { Container } from "@/components/section";
 import { MotionReveal } from "@/components/motion-reveal";
 import { MessengerButton } from "@/components/messenger-button";
+import { SampleDate } from "@/components/sample-date";
 import { buttonVariants } from "@/components/ui/button";
+import { sampleCouple } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 export function Hero() {
@@ -88,13 +90,13 @@ function HeroMockup() {
           {/* Invitation content */}
           <div className="relative px-6 pb-8 pt-9 text-center">
             <div className="mx-auto mb-5 h-px w-10 bg-gold" />
-            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+            <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
               Together with their families
             </p>
             <h3 className="mt-4 font-heading text-3xl font-semibold leading-tight text-navy">
-              Maria
+              {sampleCouple.firstName}
               <span className="mx-2 align-middle text-gold">&amp;</span>
-              Joseph
+              {sampleCouple.secondName}
             </h3>
             <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
               request the pleasure of your company as they celebrate their wedding
@@ -103,34 +105,34 @@ function HeroMockup() {
             <div className="mx-auto mt-6 flex max-w-[13rem] items-center justify-center gap-4 text-navy">
               <div className="flex-1 text-right">
                 <p className="font-heading text-lg font-semibold leading-none">
-                  Feb
+                  <SampleDate format="month" />
                 </p>
-                <p className="text-[0.65rem] uppercase tracking-widest text-muted-foreground">
+                <p className="text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">
                   Month
                 </p>
               </div>
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-gold/60 font-heading text-xl font-semibold">
-                14
+                <SampleDate format="day" />
               </div>
               <div className="flex-1 text-left">
                 <p className="font-heading text-lg font-semibold leading-none">
-                  2027
+                  <SampleDate format="year" />
                 </p>
-                <p className="text-[0.65rem] uppercase tracking-widest text-muted-foreground">
+                <p className="text-[0.7rem] uppercase tracking-[0.12em] text-muted-foreground">
                   Year
                 </p>
               </div>
             </div>
 
             <div className="mt-6 rounded-xl border border-border bg-white p-3 text-left">
-              <p className="text-[0.65rem] font-semibold uppercase tracking-widest text-muted-foreground">
+              <p className="text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-muted-foreground">
                 Will you attend?
               </p>
               <div className="mt-2 flex gap-2">
-                <span className="flex-1 rounded-lg bg-navy py-2 text-center text-[0.7rem] font-semibold text-ivory">
+                <span className="flex-1 rounded-lg bg-navy py-2 text-center text-xs font-semibold text-ivory">
                   Joyfully accepts
                 </span>
-                <span className="rounded-lg border border-border px-3 py-2 text-center text-[0.7rem] font-medium text-muted-foreground">
+                <span className="rounded-lg border border-border px-3 py-2 text-center text-xs font-medium text-muted-foreground">
                   Regrets
                 </span>
               </div>

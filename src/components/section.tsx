@@ -3,20 +3,44 @@ import { cn } from "@/lib/utils";
 type SectionProps = React.ComponentProps<"section"> & {
   /** Constrains inner content width and centers it with responsive padding. */
   container?: boolean;
+  /** Editorial spacing role for this part of the conversion journey. */
+  tier?: "flagship" | "primary" | "supporting";
+  /** Brand-derived surface used to separate adjacent compositions. */
+  surface?: "ivory" | "tint" | "white" | "navy";
 };
 
+const tierClasses = {
+  flagship: "py-20 sm:py-24 lg:py-32",
+  primary: "py-16 sm:py-20 lg:py-28",
+  supporting: "py-14 sm:py-16 lg:py-20",
+} as const;
+
+const surfaceClasses = {
+  ivory: "bg-ivory",
+  tint: "bg-surface-tint",
+  white: "bg-white",
+  navy: "bg-navy text-ivory",
+} as const;
+
 /**
- * Section landmark with consistent vertical rhythm and a centered container.
+ * Section landmark with role-based editorial rhythm and branded surfaces.
  */
 export function Section({
   className,
   container = true,
+  tier = "primary",
+  surface = "ivory",
   children,
   ...props
 }: SectionProps) {
   return (
     <section
-      className={cn("scroll-mt-24 py-16 sm:py-20 lg:py-28", className)}
+      className={cn(
+        "scroll-mt-24",
+        tierClasses[tier],
+        surfaceClasses[surface],
+        className
+      )}
       {...props}
     >
       {container ? <Container>{children}</Container> : children}
@@ -44,6 +68,7 @@ type SectionHeadingProps = {
   description?: string;
   align?: "left" | "center";
   tone?: "light" | "dark";
+  scale?: "standard" | "display";
   className?: string;
 };
 
@@ -56,6 +81,7 @@ export function SectionHeading({
   description,
   align = "center",
   tone = "light",
+  scale = "standard",
   className,
 }: SectionHeadingProps) {
   const isDark = tone === "dark";
@@ -79,7 +105,10 @@ export function SectionHeading({
       ) : null}
       <h2
         className={cn(
-          "font-heading text-3xl font-semibold leading-tight tracking-tight text-balance sm:text-4xl lg:text-[2.75rem]",
+          "font-heading font-semibold leading-tight tracking-tight text-balance",
+          scale === "display"
+            ? "text-4xl sm:text-5xl lg:text-[3.5rem]"
+            : "text-3xl sm:text-4xl lg:text-[2.75rem]",
           isDark ? "text-ivory" : "text-navy"
         )}
       >
