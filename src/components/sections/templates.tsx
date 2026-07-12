@@ -77,7 +77,7 @@ function TemplateCard({ template }: { template: Template }) {
             <h3 className="font-heading text-xl font-semibold text-navy">
               {template.name}
             </h3>
-            <p className="mt-0.5 text-xs font-medium uppercase tracking-wider text-blue">
+            <p className="mt-0.5 text-xs font-medium uppercase tracking-wider text-muted-foreground">
               {template.mood}
             </p>
           </div>
