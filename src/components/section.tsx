@@ -71,7 +71,7 @@ export function SectionHeading({
         <span
           className={cn(
             "text-xs font-semibold uppercase tracking-[0.2em]",
-            isDark ? "text-gold" : "text-blue"
+            isDark ? "text-gold" : "text-muted-foreground"
           )}
         >
           {eyebrow}

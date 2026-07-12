@@ -16,6 +16,8 @@ type AxeViolation = {
   nodes: Array<{ target: string[]; failureSummary?: string }>;
 };
 
+const BLOCKING_IMPACTS = new Set(["serious", "critical"]);
+
 function formatViolations(violations: AxeViolation[]): string {
   if (violations.length === 0) {
     return "No accessibility violations found.";
@@ -45,6 +47,10 @@ test.describe("Accessibility audit — homepage", () => {
   test("runs Axe WCAG 2.1 A/AA scan", async ({ page }, testInfo) => {
     const viewport = viewportLabel(testInfo);
 
+    // Prefer reduced motion so scroll-reveal opacity does not dilute measured
+    // text colors and create false color-contrast failures.
+    await page.emulateMedia({ reducedMotion: "reduce" });
+
     await page.goto("/", { waitUntil: "load" });
     await page.waitForTimeout(300);
 
@@ -53,6 +59,12 @@ test.describe("Accessibility audit — homepage", () => {
       .analyze();
 
     const violations = results.violations as AxeViolation[];
+    const blockingViolations = violations.filter((violation) =>
+      BLOCKING_IMPACTS.has(violation.impact ?? ""),
+    );
+    const nonBlockingViolations = violations.filter(
+      (violation) => !BLOCKING_IMPACTS.has(violation.impact ?? ""),
+    );
 
     const report = [
       `# Accessibility audit — homepage (${viewport})`,
@@ -62,6 +74,8 @@ test.describe("Accessibility audit — homepage", () => {
       `## Summary`,
       "",
       `- Violations: ${violations.length}`,
+      `- Serious/critical: ${blockingViolations.length}`,
+      `- Minor/moderate: ${nonBlockingViolations.length}`,
       `- Incomplete: ${results.incomplete.length}`,
       `- Passes: ${results.passes.length}`,
       `- Inapplicable: ${results.inapplicable.length}`,
@@ -81,6 +95,7 @@ test.describe("Accessibility audit — homepage", () => {
           url: results.url,
           timestamp: results.timestamp,
           violationCount: violations.length,
+          blockingViolationCount: blockingViolations.length,
           violations,
         },
         null,
@@ -93,23 +108,23 @@ test.describe("Accessibility audit — homepage", () => {
       contentType: "text/markdown",
     });
 
-    // eslint-disable-next-line no-console -- intentional audit summary output
     console.log(`\n[a11y ${viewport}]\n${report}`);
 
-    // Phase 1: capture and report Axe findings. Enforcement against a clean
-    // violation baseline comes later so we do not block setup on existing
-    // contrast issues in the landing page.
-    expect(results.violations, "Axe scan should return a violations array").toBeDefined();
-    expect(
-      Array.isArray(results.violations),
-      "Axe violations payload should be an array",
-    ).toBe(true);
-
-    if (violations.length > 0) {
+    if (nonBlockingViolations.length > 0) {
       testInfo.annotations.push({
-        type: "a11y-violations",
-        description: `${violations.length} violation(s) recorded in ${reportPath}`,
+        type: "a11y-non-blocking",
+        description: `${nonBlockingViolations.length} minor/moderate violation(s) recorded in ${reportPath}`,
       });
     }
+
+    expect(
+      blockingViolations,
+      [
+        `Expected 0 serious/critical Axe violations at ${viewport}.`,
+        `Found ${blockingViolations.length}:`,
+        formatViolations(blockingViolations),
+        `Full report: ${reportPath}`,
+      ].join("\n"),
+    ).toEqual([]);
   });
 });

@@ -55,7 +55,7 @@ export function Hero() {
             </MotionReveal>
 
             <MotionReveal delay={0.2}>
-              <p className="mt-6 text-sm text-blue">
+              <p className="mt-6 text-sm text-muted-foreground">
                 Made for modern Filipino couples · Mobile-friendly · Easy for every
                 guest
               </p>
@@ -88,7 +88,7 @@ function HeroMockup() {
           {/* Invitation content */}
           <div className="relative px-6 pb-8 pt-9 text-center">
             <div className="mx-auto mb-5 h-px w-10 bg-gold" />
-            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-blue">
+            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
               Together with their families
             </p>
             <h3 className="mt-4 font-heading text-3xl font-semibold leading-tight text-navy">
@@ -105,7 +105,7 @@ function HeroMockup() {
                 <p className="font-heading text-lg font-semibold leading-none">
                   Feb
                 </p>
-                <p className="text-[0.65rem] uppercase tracking-widest text-blue">
+                <p className="text-[0.65rem] uppercase tracking-widest text-muted-foreground">
                   Month
                 </p>
               </div>
@@ -116,14 +116,14 @@ function HeroMockup() {
                 <p className="font-heading text-lg font-semibold leading-none">
                   2027
                 </p>
-                <p className="text-[0.65rem] uppercase tracking-widest text-blue">
+                <p className="text-[0.65rem] uppercase tracking-widest text-muted-foreground">
                   Year
                 </p>
               </div>
             </div>
 
             <div className="mt-6 rounded-xl border border-border bg-white p-3 text-left">
-              <p className="text-[0.65rem] font-semibold uppercase tracking-widest text-blue">
+              <p className="text-[0.65rem] font-semibold uppercase tracking-widest text-muted-foreground">
                 Will you attend?
               </p>
               <div className="mt-2 flex gap-2">

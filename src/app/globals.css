@@ -74,8 +74,12 @@
   --secondary: #ffffff;
   --secondary-foreground: var(--inviora-navy);
   --muted: #f1ebdf;
-  /* Accessible slate for supporting text on ivory/white (WCAG AA). */
-  --muted-foreground: #4a5a72;
+  /*
+   * Supporting text on ivory/white. Dusty Blue (#7089A8) is reserved for
+   * decoration and large accents — it fails WCAG AA for small text (~3.28:1).
+   * This navy-tinted slate keeps hierarchy while clearing 4.5:1.
+   */
+  --muted-foreground: #3d4a5c;
   --accent: var(--inviora-gold);
   --accent-foreground: var(--inviora-navy);
   --destructive: oklch(0.577 0.245 27.325);
@@ -86,7 +90,7 @@
   --chart-2: var(--inviora-blue);
   --chart-3: var(--inviora-navy);
   --chart-4: #a7896a;
-  --chart-5: #4a5a72;
+  --chart-5: #3d4a5c;
   --radius: 0.625rem;
   --sidebar: var(--inviora-ivory);
   --sidebar-foreground: var(--inviora-navy);
