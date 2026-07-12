@@ -12,6 +12,16 @@
 
 # testing
 /coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# UI audit generated artifacts (directories kept via .gitkeep)
+/ui-audit/current/*.png
+/ui-audit/reports/**
+!/ui-audit/reports/.gitignore
+!/ui-audit/reports/.gitkeep
 
 # next.js
 /.next/

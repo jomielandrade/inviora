@@ -19,7 +19,11 @@ export function Packages() {
 
       <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-3">
         {packages.map((pkg, index) => (
-          <MotionReveal key={pkg.id} delay={index * 0.08} className="flex">
+          <MotionReveal
+            key={pkg.id}
+            delay={index * 0.08}
+            className="flex min-w-0"
+          >
             <PackageCard pkg={pkg} />
           </MotionReveal>
         ))}
@@ -39,7 +43,7 @@ function PackageCard({ pkg }: { pkg: Package }) {
   return (
     <div
       className={cn(
-        "relative flex w-full flex-col rounded-3xl border p-7 sm:p-8",
+        "relative flex w-full min-w-0 max-w-full flex-col rounded-3xl border p-7 sm:p-8",
         featured
           ? "border-navy bg-navy text-ivory shadow-[0_30px_60px_-30px_rgba(14,27,61,0.6)]"
           : "border-border bg-card text-navy"
@@ -111,7 +115,7 @@ function PackageCard({ pkg }: { pkg: Package }) {
           reference={`package-${pkg.id}`}
           variant={featured ? "default" : "outline"}
           className={cn(
-            "w-full",
+            "h-auto min-h-12 w-full min-w-0 whitespace-normal",
             featured &&
               "bg-gold text-navy hover:bg-gold/90 focus-visible:ring-gold/50"
           )}
