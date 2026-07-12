@@ -7,9 +7,16 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-manrope);
+  --font-heading: var(--font-cormorant);
+
+  /* Inviora brand palette */
+  --color-navy: var(--inviora-navy);
+  --color-gold: var(--inviora-gold);
+  --color-ivory: var(--inviora-ivory);
+  --color-blue: var(--inviora-blue);
+
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,72 +56,46 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.147 0.004 49.3);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.147 0.004 49.3);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.147 0.004 49.3);
-  --primary: oklch(0.214 0.009 43.1);
-  --primary-foreground: oklch(0.986 0.002 67.8);
-  --secondary: oklch(0.96 0.002 17.2);
-  --secondary-foreground: oklch(0.214 0.009 43.1);
-  --muted: oklch(0.96 0.002 17.2);
-  --muted-foreground: oklch(0.547 0.021 43.1);
-  --accent: oklch(0.96 0.002 17.2);
-  --accent-foreground: oklch(0.214 0.009 43.1);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0.005 34.3);
-  --input: oklch(0.922 0.005 34.3);
-  --ring: oklch(0.714 0.014 41.2);
-  --chart-1: oklch(0.868 0.007 39.5);
-  --chart-2: oklch(0.547 0.021 43.1);
-  --chart-3: oklch(0.438 0.017 39.3);
-  --chart-4: oklch(0.367 0.016 35.7);
-  --chart-5: oklch(0.268 0.011 36.5);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.986 0.002 67.8);
-  --sidebar-foreground: oklch(0.147 0.004 49.3);
-  --sidebar-primary: oklch(0.214 0.009 43.1);
-  --sidebar-primary-foreground: oklch(0.986 0.002 67.8);
-  --sidebar-accent: oklch(0.96 0.002 17.2);
-  --sidebar-accent-foreground: oklch(0.214 0.009 43.1);
-  --sidebar-border: oklch(0.922 0.005 34.3);
-  --sidebar-ring: oklch(0.714 0.014 41.2);
-}
+  /* Exact Inviora brand colors */
+  --inviora-navy: #0e1b3d;
+  --inviora-gold: #e7a23a;
+  --inviora-ivory: #f8f4ec;
+  --inviora-blue: #7089a8;
 
-.dark {
-  --background: oklch(0.147 0.004 49.3);
-  --foreground: oklch(0.986 0.002 67.8);
-  --card: oklch(0.214 0.009 43.1);
-  --card-foreground: oklch(0.986 0.002 67.8);
-  --popover: oklch(0.214 0.009 43.1);
-  --popover-foreground: oklch(0.986 0.002 67.8);
-  --primary: oklch(0.922 0.005 34.3);
-  --primary-foreground: oklch(0.214 0.009 43.1);
-  --secondary: oklch(0.268 0.011 36.5);
-  --secondary-foreground: oklch(0.986 0.002 67.8);
-  --muted: oklch(0.268 0.011 36.5);
-  --muted-foreground: oklch(0.714 0.014 41.2);
-  --accent: oklch(0.268 0.011 36.5);
-  --accent-foreground: oklch(0.986 0.002 67.8);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.547 0.021 43.1);
-  --chart-1: oklch(0.868 0.007 39.5);
-  --chart-2: oklch(0.547 0.021 43.1);
-  --chart-3: oklch(0.438 0.017 39.3);
-  --chart-4: oklch(0.367 0.016 35.7);
-  --chart-5: oklch(0.268 0.011 36.5);
-  --sidebar: oklch(0.214 0.009 43.1);
-  --sidebar-foreground: oklch(0.986 0.002 67.8);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.986 0.002 67.8);
-  --sidebar-accent: oklch(0.268 0.011 36.5);
-  --sidebar-accent-foreground: oklch(0.986 0.002 67.8);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.547 0.021 43.1);
+  /* Semantic tokens derived from the brand palette */
+  --background: var(--inviora-ivory);
+  --foreground: var(--inviora-navy);
+  --card: #ffffff;
+  --card-foreground: var(--inviora-navy);
+  --popover: #ffffff;
+  --popover-foreground: var(--inviora-navy);
+  --primary: var(--inviora-navy);
+  --primary-foreground: var(--inviora-ivory);
+  --secondary: #ffffff;
+  --secondary-foreground: var(--inviora-navy);
+  --muted: #f1ebdf;
+  /* Accessible slate for supporting text on ivory/white (WCAG AA). */
+  --muted-foreground: #4a5a72;
+  --accent: var(--inviora-gold);
+  --accent-foreground: var(--inviora-navy);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: #e3dccc;
+  --input: #d8d0be;
+  --ring: #7089a8;
+  --chart-1: var(--inviora-gold);
+  --chart-2: var(--inviora-blue);
+  --chart-3: var(--inviora-navy);
+  --chart-4: #a7896a;
+  --chart-5: #4a5a72;
+  --radius: 0.625rem;
+  --sidebar: var(--inviora-ivory);
+  --sidebar-foreground: var(--inviora-navy);
+  --sidebar-primary: var(--inviora-navy);
+  --sidebar-primary-foreground: var(--inviora-ivory);
+  --sidebar-accent: #f1ebdf;
+  --sidebar-accent-foreground: var(--inviora-navy);
+  --sidebar-border: #e3dccc;
+  --sidebar-ring: #7089a8;
 }
 
 @layer base {
@@ -122,9 +103,33 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "ss01", "cv01";
   }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+    /* Offset anchor targets so the sticky header never covers them. */
+    scroll-padding-top: 5.5rem;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-heading;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
