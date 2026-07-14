@@ -23,10 +23,10 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full transition-colors duration-300",
+        "sticky top-0 z-50 w-full border-b transition-colors duration-300",
         scrolled
-          ? "border-b border-border bg-ivory/85 backdrop-blur-md"
-          : "border-b border-transparent bg-ivory/0"
+          ? "border-border bg-ivory/85 backdrop-blur-md"
+          : "border-border/50 bg-ivory/40 backdrop-blur-sm"
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-5 sm:h-20 sm:px-8">

@@ -2,7 +2,6 @@ import { Check, Heart } from "lucide-react";
 
 import { Container } from "@/components/section";
 import { MotionReveal } from "@/components/motion-reveal";
-import { MessengerButton } from "@/components/messenger-button";
 import { SampleDate } from "@/components/sample-date";
 import { buttonVariants } from "@/components/ui/button";
 import { sampleCouple } from "@/lib/site-config";
@@ -10,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-10 pb-16 sm:pt-16 sm:pb-20 lg:pt-20 lg:pb-28">
+    <section className="relative flex min-h-[calc(100vh-4rem)] flex-col justify-center overflow-hidden bg-gradient-to-b from-ivory to-surface-tint py-12 sm:min-h-[calc(100vh-5rem)] sm:py-16 lg:py-20">
       {/* Subtle folded-paper guide line, purely decorative. */}
       <div
         aria-hidden="true"
@@ -22,7 +21,7 @@ export function Hero() {
             <MotionReveal>
               <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] text-navy">
                 <Heart aria-hidden="true" className="size-3.5 text-gold" />
-                Digital invitations, thoughtfully made
+                The invitation. The aura.
               </span>
             </MotionReveal>
 
@@ -41,17 +40,23 @@ export function Hero() {
 
             <MotionReveal delay={0.15}>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <MessengerButton reference="hero">
-                  Message us on Facebook
-                </MessengerButton>
                 <a
                   href="#templates"
+                  className={cn(
+                    buttonVariants({ variant: "default" }),
+                    "h-12 gap-2 rounded-full px-6 text-sm font-semibold sm:text-[0.9375rem]"
+                  )}
+                >
+                  View templates
+                </a>
+                <a
+                  href="#packages"
                   className={cn(
                     buttonVariants({ variant: "outline" }),
                     "h-12 gap-2 rounded-full px-6 text-sm font-semibold sm:text-[0.9375rem]"
                   )}
                 >
-                  Explore templates
+                  Explore packages
                 </a>
               </div>
             </MotionReveal>
@@ -82,7 +87,13 @@ function HeroMockup() {
   return (
     <div aria-hidden="true" className="relative w-full max-w-[22rem]">
       {/* Soft backdrop panel */}
-      <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-white/50" />
+      <div className="absolute -inset-4 -z-10 rounded-[2.5rem] bg-gradient-to-br from-white/60 to-white/30" />
+
+      {/* Invitation-inspired corner marks */}
+      <span className="absolute -top-7 -left-7 h-6 w-px bg-gold/40" />
+      <span className="absolute -top-7 -left-7 h-px w-6 bg-gold/40" />
+      <span className="absolute -right-7 -bottom-7 h-6 w-px bg-gold/40" />
+      <span className="absolute -right-7 -bottom-7 h-px w-6 bg-gold/40" />
 
       {/* Phone frame */}
       <div className="relative mx-auto w-full rounded-[2.25rem] border border-navy/10 bg-navy p-2.5 shadow-[0_30px_60px_-25px_rgba(14,27,61,0.55)]">
