@@ -122,11 +122,20 @@
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "ss01", "cv01";
   }
+  :root {
+    /* Matches header inner height: h-16 (4rem) / sm:h-20 (5rem). */
+    --header-height: 4rem;
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --header-height: 5rem;
+    }
+  }
+
   html {
     @apply font-sans;
     scroll-behavior: smooth;
-    /* Offset anchor targets so the sticky header never covers them. */
-    scroll-padding-top: 5.5rem;
   }
   h1,
   h2,

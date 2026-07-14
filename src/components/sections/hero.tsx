@@ -9,7 +9,10 @@ import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
-    <section className="relative flex min-h-[calc(100vh-4rem)] flex-col justify-center overflow-hidden bg-gradient-to-b from-ivory to-surface-tint py-12 sm:min-h-[calc(100vh-5rem)] sm:py-16 lg:py-20">
+    <section
+      id="home"
+      className="relative flex min-h-[calc(100vh-var(--header-height))] flex-col justify-center overflow-hidden bg-gradient-to-b from-ivory to-surface-tint py-12 sm:py-16 lg:py-20"
+    >
       {/* Subtle folded-paper guide line, purely decorative. */}
       <div
         aria-hidden="true"

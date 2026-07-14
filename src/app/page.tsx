@@ -19,7 +19,6 @@ export default function Home() {
       >
         Skip to content
       </a>
-      <span id="top" aria-hidden="true" />
       <Header />
       <main id="main" className="flex-1">
         <Hero />

@@ -3,8 +3,13 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/lib/site-config";
 
-// Intrinsic aspect ratio of the supplied brand assets (~1.716:1).
-const LOGO_ASPECT = 1.716;
+// Intrinsic aspect ratio of each brand asset (width / height), trimmed tight
+// to the mark and wordmark. The light and dark exports are not identically
+// cropped, so each variant tracks its own ratio.
+const LOGO_ASPECT: Record<NonNullable<LogoProps["variant"]>, number> = {
+  light: 1847 / 1078,
+  dark: 4315 / 2363,
+};
 
 type LogoProps = {
   /** Use "light" on ivory/white surfaces and "dark" on Midnight Navy. */
@@ -25,7 +30,7 @@ export function Logo({
     variant === "dark"
       ? "/brand/inviora-logo-dark.png"
       : "/brand/inviora-logo-light.png";
-  const width = Math.round(height * LOGO_ASPECT);
+  const width = Math.round(height * LOGO_ASPECT[variant]);
 
   return (
     <Image
