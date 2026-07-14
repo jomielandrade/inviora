@@ -44,6 +44,7 @@ export type NavLink = {
 };
 
 export const navLinks: readonly NavLink[] = [
+  { label: "Home", href: "#home" },
   { label: "Templates", href: "#templates" },
   { label: "Features", href: "#features" },
   { label: "Packages", href: "#packages" },

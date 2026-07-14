@@ -35,8 +35,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/brand/inviora-logo-light.png",
-        width: 2788,
-        height: 1625,
+        width: 1847,
+        height: 1078,
         alt: "Inviora",
       },
     ],
@@ -47,9 +47,6 @@ export const metadata: Metadata = {
     description:
       "Elegant digital wedding invitations and simpler RSVP experiences for modern celebrations.",
     images: ["/brand/inviora-logo-light.png"],
-  },
-  icons: {
-    icon: "/brand/inviora-logo-light.png",
   },
 };
 

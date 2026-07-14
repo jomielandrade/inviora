@@ -30,20 +30,36 @@ export function Section({
   container = true,
   tier = "primary",
   surface = "ivory",
+  id,
   children,
   ...props
 }: SectionProps) {
+  // Zero-height anchor at the start of section content so hash navigation
+  // lands on the heading, not above the section's top padding.
+  const anchor = id ? (
+    <span
+      id={id}
+      aria-hidden="true"
+      className="block h-0 w-full scroll-mt-[calc(var(--header-height)+0.75rem)]"
+    />
+  ) : null;
+
   return (
     <section
-      className={cn(
-        "scroll-mt-24",
-        tierClasses[tier],
-        surfaceClasses[surface],
-        className
-      )}
+      className={cn(tierClasses[tier], surfaceClasses[surface], className)}
       {...props}
     >
-      {container ? <Container>{children}</Container> : children}
+      {container ? (
+        <Container>
+          {anchor}
+          {children}
+        </Container>
+      ) : (
+        <>
+          {anchor}
+          {children}
+        </>
+      )}
     </section>
   );
 }

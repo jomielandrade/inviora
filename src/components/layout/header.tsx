@@ -23,17 +23,17 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 w-full border-b transition-colors duration-300",
+        "sticky top-0 z-50 w-full border-b transition-all duration-300",
         scrolled
-          ? "border-border bg-ivory/85 backdrop-blur-md"
-          : "border-border/50 bg-ivory/40 backdrop-blur-sm"
+          ? "border-border/60 bg-ivory/70 shadow-[0_1px_24px_-6px_rgba(14,27,61,0.16)] backdrop-blur-xl backdrop-saturate-150"
+          : "border-transparent bg-ivory/40 backdrop-blur-sm"
       )}
     >
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between gap-4 px-5 sm:h-20 sm:px-8">
         <a
-          href="#top"
+          href="#home"
           aria-label={`${siteConfig.name} home`}
-          className="flex items-center rounded-md focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+          className="flex items-center rounded-md opacity-100 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
         >
           <Logo
             variant="light"
@@ -49,7 +49,7 @@ export function Header() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="rounded-md text-sm font-medium text-navy/80 transition-colors hover:text-navy focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                  className="group relative rounded-md py-1 text-sm font-medium text-navy/80 transition-colors after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-300 after:content-[''] hover:text-navy hover:after:scale-x-100 focus-visible:text-navy focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:after:scale-x-100"
                 >
                   {link.label}
                 </a>
@@ -59,7 +59,11 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <MessengerButton reference="header" variant="default">
+          <MessengerButton
+            reference="header"
+            variant="default"
+            className="shadow-sm transition-shadow hover:shadow-md"
+          >
             Message us
           </MessengerButton>
         </div>
@@ -90,7 +94,7 @@ export function Header() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="flex min-h-11 items-center rounded-lg px-4 text-base font-medium text-navy transition-colors hover:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
+                    className="relative flex min-h-11 items-center rounded-lg px-4 text-base font-medium text-navy transition-colors before:absolute before:inset-y-2 before:left-0 before:w-0.5 before:origin-center before:scale-y-0 before:bg-gold before:transition-transform before:duration-300 hover:bg-muted hover:before:scale-y-100 focus-visible:bg-muted focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:before:scale-y-100"
                   >
                     {link.label}
                   </a>
