@@ -23,7 +23,7 @@ export function messengerUrl(ref?: string): string {
 
 export const siteConfig = {
   name: "Inviora",
-  legalName: "Inviora Digital",
+  legalName: "Inviora",
   tagline: "Beautiful invitations. Simpler celebrations.",
   description:
     "Elegant digital wedding invitations and simpler RSVP experiences for modern celebrations.",
