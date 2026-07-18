@@ -120,16 +120,16 @@ Unavailable event categories must be labeled "Coming soon."
 
 Keep package information centralized in typed configuration.
 
-Current prices:
+Current launch prices (displayed):
 
-- Essential: `₱1,999`
-- Premium: `₱3,499`
-- Custom: `Starts at ₱12,999`
+- Essential: `₱1,499` (regular `₱1,999`)
+- Signature: `₱2,499` (regular `₱3,499`)
+- Bespoke: `Starts at ₱6,999` (regular `Starts at ₱9,999`)
 
-Premium must be marked "Most Popular."
+Signature must be marked "Most Popular."
 
-Do not change pricing or package inclusions without reporting the proposed
-change first.
+Do not change pricing, package names, or package inclusions without reporting
+the proposed change first.
 
 ## Contact Configuration
 

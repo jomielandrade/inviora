@@ -212,9 +212,12 @@ export const features: readonly Feature[] = [
 ];
 
 export type Package = {
-  id: "essential" | "premium" | "custom";
+  id: "essential" | "signature" | "bespoke";
   name: string;
+  /** Current launch / displayed price. */
   price: string;
+  /** Future regular price after the launch period. */
+  regularPrice: string;
   priceNote?: string;
   positioning: string;
   featured: boolean;
@@ -228,7 +231,8 @@ export const packages: readonly Package[] = [
   {
     id: "essential",
     name: "Essential",
-    price: "₱1,999",
+    price: "₱1,499",
+    regularPrice: "₱1,999",
     positioning:
       "A polished digital invitation with the details your guests need.",
     featured: false,
@@ -243,28 +247,30 @@ export const packages: readonly Package[] = [
     cta: "Choose Essential",
   },
   {
-    id: "premium",
-    name: "Premium",
-    price: "₱3,499",
+    id: "signature",
+    name: "Signature",
+    price: "₱2,499",
+    regularPrice: "₱3,499",
     positioning:
       "More personalization, more guest flexibility, and easier RSVP management.",
     featured: true,
     badge: "Most Popular",
     includesLabel: "Everything in Essential, plus:",
     features: [
-      "Premium template options",
+      "Signature template options",
       "Personalized guest links",
       "Advanced RSVP fields",
       "Full RSVP management dashboard",
       "Expanded gallery",
       "Priority customization",
     ],
-    cta: "Choose Premium",
+    cta: "Choose Signature",
   },
   {
-    id: "custom",
-    name: "Custom",
-    price: "Starts at ₱12,999",
+    id: "bespoke",
+    name: "Bespoke",
+    price: "Starts at ₱6,999",
+    regularPrice: "Starts at ₱9,999",
     positioning:
       "A fully custom digital experience designed around your celebration.",
     featured: false,
@@ -276,12 +282,12 @@ export const packages: readonly Package[] = [
       "Full RSVP management dashboard",
       "Custom integrations scoped separately",
     ],
-    cta: "Discuss a custom invitation",
+    cta: "Discuss a bespoke invitation",
   },
 ];
 
 export const pricingNote =
-  "Final inclusions and turnaround time are confirmed before the project begins.";
+  "Launch pricing shown. Final inclusions and turnaround time are confirmed before the project begins.";
 
 /**
  * Feature comparison across packages. Values are intentionally explicit text so
@@ -292,70 +298,70 @@ export type ComparisonValue = "Included" | "Not included" | "Custom" | string;
 export type ComparisonRow = {
   feature: string;
   essential: ComparisonValue;
-  premium: ComparisonValue;
-  custom: ComparisonValue;
+  signature: ComparisonValue;
+  bespoke: ComparisonValue;
 };
 
 export const comparisonRows: readonly ComparisonRow[] = [
   {
     feature: "Template selection",
     essential: "Curated",
-    premium: "Premium options",
-    custom: "Fully custom",
+    signature: "Signature options",
+    bespoke: "Fully custom",
   },
   {
     feature: "Wedding story",
     essential: "Included",
-    premium: "Included",
-    custom: "Included",
+    signature: "Included",
+    bespoke: "Included",
   },
   {
     feature: "Event timeline and venue details",
     essential: "Included",
-    premium: "Included",
-    custom: "Included",
+    signature: "Included",
+    bespoke: "Included",
   },
   {
     feature: "Photo gallery",
     essential: "Included",
-    premium: "Expanded",
-    custom: "Custom",
+    signature: "Expanded",
+    bespoke: "Custom",
   },
   {
     feature: "RSVP form",
     essential: "Standard",
-    premium: "Advanced fields",
-    custom: "Custom flow",
+    signature: "Advanced fields",
+    bespoke: "Custom flow",
   },
   {
     feature: "Personalized guest links",
     essential: "Not included",
-    premium: "Included",
-    custom: "Included",
+    signature: "Included",
+    bespoke: "Included",
   },
   {
     feature: "RSVP management dashboard",
     essential: "Not included",
-    premium: "Included",
-    custom: "Included",
+    signature: "Included",
+    bespoke: "Included",
   },
   {
     feature: "Custom sections",
     essential: "Not included",
-    premium: "Priority customization",
-    custom: "Fully custom",
+    signature: "Priority customization",
+    bespoke: "Fully custom",
   },
   {
     feature: "Custom integrations",
     essential: "Not included",
-    premium: "Not included",
-    custom: "Scoped separately",
+    signature: "Not included",
+    bespoke: "Scoped separately",
   },
   {
     feature: "Turnaround time",
     essential: "To be confirmed",
-    premium: "To be confirmed",
-    custom: "To be confirmed",
+    signature: "To be confirmed",
+    bespoke: "To be confirmed",
   },
 ];
 
@@ -392,7 +398,7 @@ export const faqs: readonly Faq[] = [
   {
     question: "Can we use our own design or request custom sections?",
     answer:
-      "Yes. Higher packages support custom sections, and the Custom package is built around a fully personalized visual direction and page structure.",
+      "Yes. Higher packages support custom sections, and the Bespoke package is built around a fully personalized visual direction and page structure.",
   },
   {
     question: "How do guests submit their RSVP?",

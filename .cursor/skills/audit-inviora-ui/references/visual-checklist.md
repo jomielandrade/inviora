@@ -75,8 +75,8 @@ Use this checklist after objective Playwright and Axe results. Support every fin
 
 ## Content integrity
 
-- Package prices must remain Essential `₱1,999`, Premium `₱3,499`, Custom `Starts at ₱12,999` unless the user explicitly changes them.
-- Premium remains marked `Most Popular`.
+- Package names and launch prices must remain Essential `₱1,499`, Signature `₱2,499`, Bespoke `Starts at ₱6,999` unless the user explicitly changes them.
+- Signature remains marked `Most Popular`.
 - Template placeholders say `Preview coming soon`.
 - Unavailable celebration types say `Coming soon`.
 - Do not invent social proof, customers, ratings, awards, turnaround guarantees, or policies.

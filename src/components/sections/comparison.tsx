@@ -17,7 +17,7 @@ export function Comparison() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="mx-auto mt-10 max-w-4xl">
+    <div className="mx-auto mt-12 max-w-4xl">
       <Collapsible.Root open={open} onOpenChange={setOpen}>
         <div className="flex justify-center">
           <Collapsible.Trigger
@@ -35,7 +35,8 @@ export function Comparison() {
         </div>
 
         <Collapsible.Panel className="h-[var(--collapsible-panel-height)] overflow-hidden transition-[height] duration-300 ease-out data-[ending-style]:h-0 data-[starting-style]:h-0">
-          <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-card">
+          <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-card shadow-[0_18px_40px_-36px_rgba(14,27,61,0.3)]">
+            {/* Grouped rows on small screens — no horizontal scroll (H-03). */}
             <div
               data-comparison-mobile
               className="divide-y divide-border md:hidden"
@@ -52,11 +53,12 @@ export function Comparison() {
                     />
                     <MobileComparisonValue
                       packageName={columns[1].name}
-                      value={row.premium}
+                      value={row.signature}
+                      emphasized
                     />
                     <MobileComparisonValue
                       packageName={columns[2].name}
-                      value={row.custom}
+                      value={row.bespoke}
                     />
                   </dl>
                 </section>
@@ -74,25 +76,31 @@ export function Comparison() {
                 <col className="w-[22%]" />
               </colgroup>
               <thead>
-                <tr className="border-b border-border">
+                <tr className="border-b border-navy/80 bg-navy text-ivory">
                   <th
                     scope="col"
-                    className="p-4 font-heading text-base font-semibold text-navy"
+                    className="p-4 font-heading text-base font-semibold text-ivory"
                   >
                     Feature
                   </th>
-                  {columns.map((column) => (
-                    <th
-                      key={column.id}
-                      scope="col"
-                      className="p-4 align-bottom font-heading text-base font-semibold text-navy"
-                    >
-                      <span className="block">{column.name}</span>
-                      <span className="block text-xs font-medium text-muted-foreground">
-                        {column.price}
-                      </span>
-                    </th>
-                  ))}
+                  {columns.map((column) => {
+                    const isSignature = column.id === "signature";
+                    return (
+                      <th
+                        key={column.id}
+                        scope="col"
+                        className={cn(
+                          "p-4 align-bottom font-heading text-base font-semibold text-ivory",
+                          isSignature && "bg-gold/20"
+                        )}
+                      >
+                        <span className="block">{column.name}</span>
+                        <span className="mt-1 block font-sans text-sm font-semibold tabular-nums tracking-tight text-gold">
+                          {column.price}
+                        </span>
+                      </th>
+                    );
+                  })}
                 </tr>
               </thead>
               <tbody>
@@ -111,8 +119,8 @@ export function Comparison() {
                       {row.feature}
                     </th>
                     <ComparisonCell value={row.essential} />
-                    <ComparisonCell value={row.premium} />
-                    <ComparisonCell value={row.custom} />
+                    <ComparisonCell value={row.signature} emphasized />
+                    <ComparisonCell value={row.bespoke} />
                   </tr>
                 ))}
               </tbody>
@@ -127,14 +135,21 @@ export function Comparison() {
 function MobileComparisonValue({
   packageName,
   value,
+  emphasized = false,
 }: {
   packageName: string;
   value: string;
+  emphasized?: boolean;
 }) {
   const notIncluded = value === "Not included";
 
   return (
-    <div className="grid grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-3">
+    <div
+      className={cn(
+        "grid grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-3 rounded-lg px-3 py-2",
+        emphasized && "bg-gold/10"
+      )}
+    >
       <dt className="font-semibold text-navy">{packageName}</dt>
       <dd className={notIncluded ? "text-muted-foreground" : "text-navy/90"}>
         {value}
@@ -143,13 +158,20 @@ function MobileComparisonValue({
   );
 }
 
-function ComparisonCell({ value }: { value: string }) {
+function ComparisonCell({
+  value,
+  emphasized = false,
+}: {
+  value: string;
+  emphasized?: boolean;
+}) {
   const notIncluded = value === "Not included";
   return (
     <td
       className={cn(
         "p-4 align-top",
-        notIncluded ? "text-muted-foreground" : "text-navy/90"
+        notIncluded ? "text-muted-foreground" : "text-navy/90",
+        emphasized && "bg-gold/10"
       )}
     >
       {value}

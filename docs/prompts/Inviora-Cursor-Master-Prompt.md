@@ -204,7 +204,7 @@ Heading: `Choose the experience that fits your celebration`
 
 Render responsive, accessible pricing cards and keep all package data in one typed configuration object so prices and features can be updated without editing the component markup.
 
-#### Essential — ₱1,999
+#### Essential — ₱1,499 (regular ₱1,999)
 
 Positioning: `A polished digital invitation with the details your guests need.`
 
@@ -219,7 +219,7 @@ Include:
 
 CTA: `Choose Essential`
 
-#### Premium — ₱3,499
+#### Signature — ₱2,499 (regular ₱3,499)
 
 Badge: `Most Popular`
 
@@ -227,16 +227,16 @@ Positioning: `More personalization, more guest flexibility, and easier RSVP mana
 
 Include everything in Essential, plus:
 
-- Premium template options
+- Signature template options
 - Personalized guest links
 - Advanced RSVP fields
 - Full RSVP management dashboard
 - Expanded or unlimited gallery, subject to final service policy
 - Priority customization
 
-CTA: `Choose Premium`
+CTA: `Choose Signature`
 
-#### Custom — Starts at ₱12,999
+#### Bespoke — Starts at ₱6,999 (regular Starts at ₱9,999)
 
 Positioning: `A fully custom digital experience designed around your celebration.`
 
@@ -249,9 +249,9 @@ Include:
 - Full RSVP management dashboard
 - Custom integrations scoped separately
 
-CTA: `Discuss a custom invitation`
+CTA: `Discuss a bespoke invitation`
 
-Add a short note below pricing: `Final inclusions and turnaround time are confirmed before the project begins.`
+Add a short note below pricing: `Launch pricing shown. Final inclusions and turnaround time are confirmed before the project begins.`
 
 Do not add checkout or payment controls. Every package CTA should open the same Messenger inquiry destination with an optional prefilled package message if the final link supports it.
 
@@ -381,8 +381,8 @@ The implementation is complete only when:
 - The landing page contains every required section in the correct order.
 - It clearly feels like Inviora, using the four exact brand colors and two brand fonts.
 - The design balances premium romance with modern product clarity.
-- Package names and displayed prices are exactly: Essential `₱1,999`, Premium `₱3,499`, Custom `Starts at ₱12,999`.
-- Premium is visually marked `Most Popular` without making the other options look disabled.
+- Package names and displayed launch prices are exactly: Essential `₱1,499`, Signature `₱2,499`, Bespoke `Starts at ₱6,999`.
+- Signature is visually marked `Most Popular` without making the other options look disabled.
 - Wedding templates are explicitly placeholders with `Preview coming soon`.
 - Other event categories are explicitly marked `Coming soon`.
 - All primary CTAs use the central Messenger configuration.
