@@ -78,7 +78,7 @@ Use this checklist after objective Playwright and Axe results. Support every fin
 - Package names and launch prices must remain Essential `₱1,499`, Signature `₱2,499`, Bespoke `Starts at ₱6,999` unless the user explicitly changes them.
 - Signature remains marked `Most Popular`.
 - Template placeholders say `Preview coming soon`.
-- Unavailable celebration types say `Coming soon`.
+- Weddings are featured as the available category with CTA to `#templates`; three coming-soon cards (Birthdays & debuts, Baptisms, Corporate Events) use subtle footer status labels and remain non-interactive.
 - Do not invent social proof, customers, ratings, awards, turnaround guarantees, or policies.
 
 ## Severity guide

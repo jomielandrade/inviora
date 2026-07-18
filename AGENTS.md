@@ -116,7 +116,20 @@ Template previews may use designed placeholders but must be labeled
 
 Unavailable event categories must be labeled "Coming soon."
 
-## Packages
+## Celebrations roadmap
+
+Keep celebration categories centralized in typed configuration (`celebrations` in
+`site-config.ts`).
+
+Current categories:
+
+- **Weddings** — available now; featured in the What's Next section with CTA to
+  `#templates`
+- **Coming soon** — Birthdays & debuts, Baptisms, Corporate Events (three cards)
+
+Do not change category names, descriptions, or availability without reporting
+the proposed change first. Do not add working links or implied interactivity for
+unavailable categories.
 
 Keep package information centralized in typed configuration.
 

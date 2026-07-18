@@ -84,7 +84,8 @@ export const howItWorksSteps: readonly Step[] = [
   {
     number: "01",
     title: "Choose your style",
-    description: "Start from a curated wedding template that fits your celebration.",
+    description:
+      "Start from a curated wedding template that fits your celebration.",
   },
   {
     number: "02",
@@ -171,7 +172,8 @@ export type FeatureIcon =
 export const features: readonly Feature[] = [
   {
     title: "Personalized invitation experience",
-    description: "An invitation shaped around your names, story, and celebration.",
+    description:
+      "An invitation shaped around your names, story, and celebration.",
     icon: "sparkles",
   },
   {
@@ -201,7 +203,8 @@ export const features: readonly Feature[] = [
   },
   {
     title: "RSVP tracking",
-    description: "Follow responses as they arrive, where included by your package.",
+    description:
+      "Follow responses as they arrive, where included by your package.",
     icon: "listChecks",
   },
   {
@@ -365,18 +368,61 @@ export const comparisonRows: readonly ComparisonRow[] = [
   },
 ];
 
+export type CelebrationIcon =
+  | "weddings"
+  | "birthdaysDebuts"
+  | "baptisms"
+  | "corporate";
+
 export type Celebration = {
   name: string;
+  description: string;
   available: boolean;
+  icon: CelebrationIcon;
+  /** Invitation-style phrase shown in the decorative card preview header. */
+  previewHeadline?: string;
+  statusLabel?: string;
+  cta?: {
+    label: string;
+    href: string;
+  };
 };
 
 export const celebrations: readonly Celebration[] = [
-  { name: "Weddings", available: true },
-  { name: "Birthdays", available: false },
-  { name: "Baptisms", available: false },
-  { name: "Debuts", available: false },
-  { name: "Anniversaries", available: false },
-  { name: "Corporate events", available: false },
+  {
+    name: "Weddings",
+    description:
+      "Create a beautifully personal digital invitation and guest experience for your celebration.",
+    available: true,
+    icon: "weddings",
+    statusLabel: "Available now",
+    cta: {
+      label: "Explore wedding invitations",
+      href: "#templates",
+    },
+  },
+  {
+    name: "Birthdays & Debuts",
+    description:
+      "Joyful invitations for every age and elegant debut celebrations.",
+    available: false,
+    icon: "birthdaysDebuts",
+    previewHeadline: "Happy Birthday",
+  },
+  {
+    name: "Baptisms",
+    description: "Meaningful invitations for a cherished milestone.",
+    available: false,
+    icon: "baptisms",
+    previewHeadline: "A Blessed Baptism",
+  },
+  {
+    name: "Corporate Events",
+    description: "Refined invitations for professional gatherings.",
+    available: false,
+    icon: "corporate",
+    previewHeadline: "Year-End Celebration",
+  },
 ];
 
 export type Faq = {

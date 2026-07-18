@@ -269,17 +269,57 @@ Requirements:
 
 ### I. Other celebrations
 
-Heading: `Made for every celebration—soon`
+Component: `src/components/sections/other-celebrations.tsx`  
+Data: typed `celebrations` array in `src/lib/site-config.ts`
 
-Display coming-soon items for:
+Product roadmap showcase placed after Packages. Weddings is the featured, available offering; three additional celebration types are shown as quieter coming-soon cards.
 
-- Birthdays
-- Baptisms
-- Debuts
-- Anniversaries
-- Corporate events
+**Introduction (stacked on all breakpoints)**
 
-Every item must be clearly tagged `Coming soon`. Keep weddings visually identified as the currently available category. Do not add working links for unavailable services.
+- Eyebrow: `What's next`
+- Heading: `Made for every celebration—soon`
+- Supporting copy: `Weddings are available today. Birthdays, milestones, and meaningful gatherings are coming next.`
+
+**Featured Weddings panel**
+
+Make Weddings visually dominant in a full-width editorial card:
+
+- Status label: `Available now` (small uppercase text, not a large competing badge)
+- Title: `Weddings`
+- Description: `Create a beautifully personal digital invitation and guest experience for your celebration.`
+- CTA: `Explore wedding invitations` linking to `#templates`
+- Integrated CSS/SVG invitation preview (decorative only; `aria-hidden`)
+
+**Coming soon (exactly three categories)**
+
+Display one card each for:
+
+| Category | Preview header | Description |
+| -------- | -------------- | ----------- |
+| Birthdays & Debuts | Happy Birthday | Joyful invitations for every age and elegant debut celebrations. |
+| Baptisms | A Blessed Baptism | Meaningful invitations for a cherished milestone. |
+| Corporate Events | Year-End Celebration | Refined invitations for professional gatherings. |
+
+Each coming-soon card must include:
+
+- A decorative invitation-style preview header using the phrases above (`previewHeadline` in `site-config.ts`)
+- A refined line icon
+- Category name
+- One short descriptive line (as above)
+- A subtle `Coming soon` footer status (muted uppercase label or footer text — not a large pill beside the title)
+
+Coming-soon cards are **non-interactive**. Do not add links, pointer cursors, or hover states that imply availability.
+
+**Layout and hierarchy**
+
+1. Stacked introduction
+2. Featured Weddings panel below
+3. `Coming soon` divider with short supporting line
+4. Responsive card grid: one column on mobile, two columns from `sm`, three columns on `lg`
+
+Weddings must remain the clear focal point. Coming-soon cards should feel related but visually quieter — paper-inspired surfaces, fine borders, restrained shadows, optional stationery motifs.
+
+Keep all celebration names, descriptions, availability flags, and CTA copy in `site-config.ts`. Do not invent launch dates or add email capture for unavailable categories.
 
 ### J. FAQ
 
