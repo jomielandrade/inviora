@@ -444,7 +444,7 @@ export const faqs: readonly Faq[] = [
   {
     question: "Can we use our own design or request custom sections?",
     answer:
-      "Yes. Higher packages support custom sections, and the Bespoke package is built around a fully personalized visual direction and page structure.",
+      "Yes. You may start from an Inviora template and personalize the content, or discuss custom sections and design requirements with us. Availability depends on your selected package and project scope.",
   },
   {
     question: "How do guests submit their RSVP?",
