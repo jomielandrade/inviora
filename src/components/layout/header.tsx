@@ -35,11 +35,12 @@ export function Header() {
           aria-label={`${siteConfig.name} home`}
           className="flex items-center rounded-md opacity-100 transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
         >
+          <Logo variant="light" height={56} priority className="sm:hidden" />
           <Logo
             variant="light"
             height={64}
             priority
-            className="h-14 w-auto sm:h-16"
+            className="hidden sm:block"
           />
         </a>
 
@@ -64,7 +65,7 @@ export function Header() {
             variant="default"
             className="shadow-sm transition-shadow hover:shadow-md"
           >
-            Message us
+            Start your invitation
           </MessengerButton>
         </div>
 
@@ -106,7 +107,7 @@ export function Header() {
                   variant="default"
                   className="w-full"
                 >
-                  Message us
+                  Start your invitation
                 </MessengerButton>
               </div>
             </Dialog.Popup>

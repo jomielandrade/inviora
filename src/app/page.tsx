@@ -1,5 +1,5 @@
 import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
+import { PageClosing } from "@/components/layout/page-closing";
 import { Hero } from "@/components/sections/hero";
 import { TrustStrip } from "@/components/sections/trust-strip";
 import { HowItWorks } from "@/components/sections/how-it-works";
@@ -8,7 +8,6 @@ import { Features } from "@/components/sections/features";
 import { Packages } from "@/components/sections/packages";
 import { OtherCelebrations } from "@/components/sections/other-celebrations";
 import { Faq } from "@/components/sections/faq";
-import { FinalCta } from "@/components/sections/final-cta";
 
 export default function Home() {
   return (
@@ -29,9 +28,8 @@ export default function Home() {
         <Packages />
         <OtherCelebrations />
         <Faq />
-        <FinalCta />
       </main>
-      <Footer />
+      <PageClosing />
     </>
   );
 }

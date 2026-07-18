@@ -145,6 +145,24 @@
   }
 }
 
+@layer utilities {
+  /*
+   * Muted foreground on Midnight Navy — color-mixed for WCAG AA on small text
+   * instead of low-opacity ivory utilities.
+   */
+  .text-on-navy-muted {
+    color: color-mix(in srgb, var(--inviora-ivory) 86%, var(--inviora-navy));
+  }
+
+  .text-on-navy-subtle {
+    color: color-mix(in srgb, var(--inviora-ivory) 74%, var(--inviora-navy));
+  }
+
+  .closing-surface {
+    background-color: var(--inviora-navy);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
